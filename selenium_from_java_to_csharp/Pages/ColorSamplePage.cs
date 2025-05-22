@@ -42,6 +42,7 @@ namespace selenium_from_java_to_csharp.Pages
             Assert.IsFalse(loadingButton.Displayed);
             Assert.AreEqual("Green Loaded", finishButton.Text);
         }
+
         //Implement methods for:
         //* 1) check that "Start loading green" button is not visible
         //* 2) check that text "Loading green..." is visible

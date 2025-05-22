@@ -6,7 +6,7 @@ namespace selenium_from_java_to_csharp.Samples
     [TestClass]
     public class Sample8Task
     {
-        private IWebDriver driver;
+        IWebDriver driver;
 
         [TestInitialize]
         public void StartingTests()

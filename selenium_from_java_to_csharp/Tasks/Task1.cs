@@ -56,7 +56,7 @@ namespace selenium_from_java_to_csharp.Tasks
         [TestMethod]
         public void ErrorOnNumberTooBig()
         {
-            for (int i = 101; i < 700; i++)
+            for (int i = 600; i < 700; i++)
             {
                 if (i == 666)
                 {

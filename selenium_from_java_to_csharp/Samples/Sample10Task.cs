@@ -14,7 +14,7 @@ namespace selenium_from_java_to_csharp.Samples
         public void StartingTests()
         {
             driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             driver.Navigate().GoToUrl("https://kristinek.github.io/site/examples/loading_color");
             colorPage = new ColorSamplePage(driver);
         }
@@ -40,6 +40,5 @@ namespace selenium_from_java_to_csharp.Samples
             //* and loading text is not seen,
             //* success is seen instead "Green Loaded"
         }
-
     }
 }

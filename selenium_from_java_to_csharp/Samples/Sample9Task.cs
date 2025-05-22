@@ -7,8 +7,8 @@ namespace selenium_from_java_to_csharp.Samples
     [TestClass]
     public class Sample9Task
     {
-        private IWebDriver driver;
-        private IWebElement greenButton;
+        IWebDriver driver;
+        IWebElement greenButton;
 
         [TestInitialize]
         public void StartingTests()
@@ -94,6 +94,5 @@ namespace selenium_from_java_to_csharp.Samples
             //* and loading text is not seen,
             //* success is seen instead "Green Loaded"
         }
-
     }
 }
