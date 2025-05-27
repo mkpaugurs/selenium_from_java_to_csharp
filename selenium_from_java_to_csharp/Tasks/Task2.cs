@@ -28,8 +28,8 @@ namespace selenium_from_java_to_csharp.Tasks
         [TestMethod]
         public void InitialFeedbackPage()
         {
-            Assert.AreEqual("", taskPage.nameBox.Text);
-            Assert.AreEqual("", taskPage.ageBox.Text);
+            Assert.AreEqual("", taskPage.nameBox.GetAttribute("value"));
+            Assert.AreEqual("", taskPage.ageBox.GetAttribute("value"));
             foreach (var checkbox in taskPage.languageCheckbox)
             {
                 Assert.IsFalse(checkbox.Selected);
@@ -37,7 +37,7 @@ namespace selenium_from_java_to_csharp.Tasks
             Assert.IsTrue(taskPage.genreRadio[2].Selected);
             var select = new SelectElement(taskPage.ratingSelect);
             Assert.AreEqual("Choose your option", select.SelectedOption.Text);
-            Assert.AreEqual("", taskPage.commentBox.Text);
+            Assert.AreEqual("", taskPage.commentBox.GetAttribute("value"));
             Assert.AreEqual("rgba(33, 150, 243, 1)", taskPage.sendButton.GetCssValue("background-color"));
             Assert.AreEqual("rgba(255, 255, 255, 1)", taskPage.sendButton.GetCssValue("color"));
             
@@ -180,7 +180,12 @@ namespace selenium_from_java_to_csharp.Tasks
             Assert.AreEqual(name, taskPage2.nameBox.GetAttribute("value"));
             Assert.AreEqual(stringAge, taskPage2.ageBox.GetAttribute("value"));
             Assert.IsTrue(taskPage2.languageCheckbox[0].Selected, "Expected English checkbox to be selected");
+            Assert.IsFalse(taskPage2.languageCheckbox[1].Selected, "Expected French checkbox to be unselected");
+            Assert.IsFalse(taskPage2.languageCheckbox[2].Selected, "Expected Spanish checkbox to be unselected");
+            Assert.IsFalse(taskPage2.languageCheckbox[3].Selected, "Expected Chinese checkbox to be unselected");
             Assert.IsTrue(taskPage2.genreRadio[0].Selected, "Expected 'male' radio button to be selected");
+            Assert.IsFalse(taskPage2.genreRadio[1].Selected, "Expected 'female' radio button to be unselected");
+            Assert.IsFalse(taskPage2.genreRadio[2].Selected, "Expected 'Don't know' radio button to be unselected");
             var reSelected = new SelectElement(taskPage2.ratingSelect);
             Assert.AreEqual(selectElementRating, reSelected.SelectedOption.Text);
             Assert.AreEqual(longComment, taskPage2.commentBox.GetAttribute("value"));

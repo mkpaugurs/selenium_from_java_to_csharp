@@ -30,7 +30,7 @@ namespace selenium_from_java_to_csharp.Tasks
         {
             numberBox.SendKeys("Text");
             submitButton.Click();
-            Assert.Contains("Please enter a number", driver.FindElement(By.Id("ch1_error")).Text);
+            Assert.AreEqual("Please enter a number", driver.FindElement(By.Id("ch1_error")).Text);
             //enter a text instead of a number, check that correct error is seen
         }
 
@@ -45,7 +45,7 @@ namespace selenium_from_java_to_csharp.Tasks
                 }
                 numberBox.SendKeys($"{i}");
                 submitButton.Click();
-                Assert.Contains("Number is too small", driver.FindElement(By.Id("ch1_error")).Text);
+                Assert.AreEqual("Number is too small", driver.FindElement(By.Id("ch1_error")).Text);
                 numberBox.SendKeys(Keys.Control + "a");
                 numberBox.SendKeys(Keys.Delete);
             }
@@ -64,7 +64,7 @@ namespace selenium_from_java_to_csharp.Tasks
                 }
                 numberBox.SendKeys($"{i}");
                 submitButton.Click();
-                Assert.Contains("Number is too big", driver.FindElement(By.Id("ch1_error")).Text);
+                Assert.AreEqual("Number is too big", driver.FindElement(By.Id("ch1_error")).Text);
                 numberBox.SendKeys(Keys.Control + "a");
                 numberBox.SendKeys(Keys.Delete);
             }
@@ -83,10 +83,10 @@ namespace selenium_from_java_to_csharp.Tasks
                 IAlert alert = driver.SwitchTo().Alert();
                 string resultText = alert.Text;
                 alert.Accept();
+                Assert.AreEqual("", driver.FindElement(By.Id("ch1_error")).Text);
 
                 string[] parts = resultText.Split(' ');
                 decimal actualSquareRoot = decimal.Parse(parts[^1]);
-
                 decimal expectedSquareRoot = Math.Round((decimal)Math.Sqrt(i), 2);
 
                 Assert.AreEqual(expectedSquareRoot, actualSquareRoot);
